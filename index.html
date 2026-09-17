@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MaddaloniMemory</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"-->
+    <!--link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda"-->
+    <!--link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Turret+Road"-->
+    <!--link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" -->
+    <!--link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Permanent+Marker" -->
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Acme" >
+
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <img id=rexyTitle src="img/titolo.png">
+        </header>
+
+
+        <section class="score-panel">
+        	Mosse: <span class="moves">0</span>, Voto:
+            <ul class="stars">
+        		<li><img class="scoreicon" src="img/winner.png"></li>
+                <li><img class="scoreicon" src="img/winner.png"></li>
+                <li><img class="scoreicon" src="img/winner.png"></li>
+                <li><img class="scoreicon" src="img/winner.png"></li>
+                <li><img class="scoreicon" src="img/winner.png"></li>
+        	</ul>
+        </section>
+
+
+        <section class="score-panel">
+            <div class="timer">
+            </div>
+            <button class="restartbutton" onclick=startGame()>DA CAPO!</button>
+        </section>
+
+        <ul class="deck" id="card-deck">
+
+            <li class="card" type="baseball">
+                <img src="img/1.jpg">
+                <img src="img/back.png">
+            </li>
+            <li class="card" type="baseball">
+                <img src="img/1.jpg">
+                <img src="img/back.png">
+            </li>
+
+            <li class="card" type="basket">
+                <img src="img/2.jpg">
+                <img src="img/back.png">
+            </li>
+            <li class="card" type="basket">
+                <img src="img/2.jpg">
+                <img src="img/back.png">
+            </li>
+
+            <li class="card" type="bike">
+                <img src="img/3.jpg">
+                <img src="img/back.png">
+            </li>
+            <li class="card" type="bike">
+                <img src="img/3.jpg">
+                <img src="img/back.png">
+            </li>
+
+            <li class="card" type="football">
+                <img src="img/4.jpg">
+                <img src="img/back.png">
+            </li>
+            <li class="card" type="football" >
+                <img src="img/4.jpg">
+                <img src="img/back.png">
+            </li>
+
+            <li class="card" type="judo">
+                <img src="img/5.jpg">
+                <img src="img/back.png">
+            </li>
+            <li class="card" type="judo">
+                <img src="img/5.jpg">
+                <img src="img/back.png">
+            </li>
+
+            <li class="card" type="lifting">
+                <img src="img/6.jpg">
+                <img src="img/back.png">
+            </li>
+            <li class="card" type="lifting">
+                <img src="img/6.jpg">
+                <img src="img/back.png">
+            </li>
+
+            <li class="card" type="skate">
+                <img src="img/7.jpg">
+                <img src="img/back.png">
+            </li>
+            <li class="card" type="skate">
+                <img src="img/7.jpg">
+                <img src="img/back.png">
+            </li>
+
+            <li class="card" type="ski">
+                <img src="img/8.jpg">
+                <img src="img/back.png">
+            </li>
+            <li class="card" type="ski">
+                <img src="img/8.jpg">
+                <img src="img/back.png">
+            </li>
+
+            <li class="card" type="soccer">
+                <img src="img/9.jpg">
+                <img src="img/back.png">
+            </li>
+            <li class="card" type="soccer">
+                <img src="img/9.jpg">
+                <img src="img/back.png">
+            </li>
+
+            <li class="card" type="swim">
+                <img src="img/10.jpg">
+                <img src="img/back.png">
+            </li>
+            <li class="card" type="swim">
+                <img src="img/10.jpg">
+                <img src="img/back.png">
+            </li>
+
+            <!--
+            <li class="card" type="tennis">
+                <img src="img/tennis.png">
+                <img src="img/back.png">
+            </li>
+            <li class="card" type="tennis">
+                <img src="img/tennis.png">
+                <img src="img/back.png">
+            </li>
+
+            <li class="card" type="volley">
+                <img src="img/volley.png">
+                <img src="img/back.png">
+            </li>
+            <li class="card" type="volley">
+                <img src="img/volley.png">
+                <img src="img/back.png">
+            </li>
+        -->
+
+        </ul>
+
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <div class="content-1">
+                    Hai Vinto!
+                </div>
+                <div class="content-2">
+                    <p>Hai fatto <span id=finalMove> </span> mosse </p>
+                    <p>in <span id=totalTime> </span>!</p>
+                    <p>Voto:  <span id=starRating></span></p>
+                </div>
+                <button id="play-again"onclick="playAgain()">
+                    Gioca ancora!
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

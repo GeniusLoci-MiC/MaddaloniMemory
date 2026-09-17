@@ -1,0 +1,474 @@
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #ffffff;
+
+/*
+	font-family: 'Permanent Marker', cursive;
+    font-size: 16px;
+    */
+
+    font-family: 'Acme';
+	font-size: 22px;
+
+	width: 100%;
+	background: #FFFFFF;
+	padding: 1rem;
+	border-radius: 4px;
+
+	/* box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5); */
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 0 3em;
+
+    background: url(../img/background.png) no-repeat;
+    background-size:100% 150%;
+
+}
+
+/*
+body::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: -10.0rem;
+    top: 8.0rem;
+    width: 80%;
+    height: 80%;
+    z-index: -1;
+    opacity: 0.3;
+
+    background-image: url(../img/RexyFull.png);
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+*/
+
+/*
+body::before {
+    content: ' ';
+    /* display: block; */
+
+/*	position: absolute;
+    left: -6.0rem;
+    top: 8.0rem;
+    width: 80%;
+	*/
+    /*min-width: 5rem;*/
+
+	/*
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 1.0;
+*/
+
+    /*
+	background: url(../img/background.png) no-repeat
+	*/
+
+
+    /*background: url(../img/background.png) no-repeat;*/
+	/*
+    background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	*/
+	/*
+}
+*/
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+
+.deck {
+	width: 85%;
+	background: #FFFFFF;
+	padding: 1rem;
+	border-radius: 4px;
+	box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 0 3em;
+    background: url(../img/background.png) no-repeat;
+    background-size:100% 250%;
+
+	/*
+    background-image: url(../img/wallpaper.png);
+    background-size:100% 100%;
+	*/
+}
+
+
+.deck .card {
+	height: 3.8rem;
+	width: 3.8rem;
+	margin: 0.1rem 0.1rem;
+	background: #441B1B;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.deck .card.open {
+	transform: rotateY(0);
+	background: #E5F720;
+	cursor: default;
+	animation-name: flipInY;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+}
+
+/*
+.deck .card.show {
+	font-size: 33px;
+}
+*/
+
+.deck .card.match {
+	cursor: default;
+	background: #A7DB82;
+	/* font-size: 33px; */
+	animation-name: rubberBand;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+}
+
+.deck .card.unmatched {
+	animation-name: pulse;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+	background: #e2043b;
+}
+
+.deck .card.disabled {
+	pointer-events: none;
+	opacity: 0.9;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+	text-align: left;
+	margin-bottom: 10px;
+    /* background-image: url(../img/wallpaper.png); */
+}
+
+.score-panel .stars {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	/* margin: 0 5px 0 0; */
+}
+
+.score-panel .stars li {
+	list-style: none;
+	display: inline-block;
+
+}
+
+.scoreicon {
+    height: 1.8rem;
+    width: 2.3rem;
+    margin: 0.1rem;
+
+    vertical-align: middle;
+}
+
+.score-panel .restart {
+	float: right;
+	cursor: pointer;
+}
+
+.fa-star {
+	color: #FFD700;
+}
+
+.timer {
+	display: inline-block;
+	margin: 0 1rem;
+}
+
+.restartbutton {
+    background-color: #3A3A3C;
+    /*border: none;*/
+    color: #FFFFFF;
+    padding: 2px 8px;
+    text-align: center;
+    /* font-family: 'Permanent Marker', cursive; */
+    font-family: 'Acme';
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    border-color: #121012;
+}
+
+/*
+ * Styles for congratulations modal
+ */
+
+.overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+	transition: opacity 500ms;
+	visibility: hidden;
+	opacity: 0;
+
+}
+
+.overlay:target {
+	visibility: visible;
+	opacity: 1;
+}
+
+.popup {
+	margin: 70px auto;
+	padding: 20px;
+	background: #ffffff;
+	border-radius: 25px;
+	width: 85%;
+	position: relative;
+	transition: all 5s ease-in-out;
+	/*font-family: 'Gloria Hallelujah', cursive;*/
+    font-family: 'Acme', cursive;
+/*
+    background-image: url(../img/wallpaper.png);
+	*/
+
+}
+
+.popup .close {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	transition: all 200ms;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #333;
+}
+
+.popup .content-1 {
+	/*max-height: 50%;*/
+    font-size: 30px;
+	overflow: auto;
+	text-align: center;
+}
+
+.popup .content-2 {
+	max-height: 30%;
+	overflow: auto;
+	text-align: center;
+}
+
+
+.show {
+	visibility: visible !important;
+	opacity: 100 !important;
+}
+
+#rexyTitle {
+    margin-top: 4.0rem;
+    margin-bottom: 3.5rem;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+	width: 80%;
+}
+
+#starRating li {
+	display: inline-block;
+}
+
+#play-again {
+    background-color: #441B1B;
+    /*border: none;*/
+    color: #FFFFFF;
+	padding: 0.7rem 1rem;
+	font-size: 1.1rem;
+	display: block;
+	margin: 0 auto;
+	width: 50%;
+
+    font-family: 'Acme';
+    font-size: 22px;
+
+	/* color: #ffffff; */
+	border-radius: 5px;
+}
+
+/* animations */
+@keyframes flipInY {
+	from {
+		transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+		animation-timing-function: ease-in;
+		opacity: 0;
+	}
+
+	40% {
+		transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+		animation-timing-function: ease-in;
+	}
+
+	60% {
+		transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+		opacity: 1;
+	}
+
+	80% {
+		transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+	}
+
+	to {
+		transform: perspective(400px);
+	}
+}
+
+@keyframes rubberBand {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, .95, 1);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+@keyframes pulse {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	50% {
+		transform: scale3d(1.2, 1.2, 1.2);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+
+/****** Media queries
+***************************/
+
+/*
+@media (max-width: 320px) {
+	.deck {
+		width: 85%;
+	}
+
+	.deck .card {
+		height: 3.7rem;
+		width: 3.0rem;
+	}
+}
+*/
+
+
+/* For Tablets and larger screens
+****************/
+
+
+@media (min-width: 768px) {
+	.container {
+		font-size: 22px;
+	}
+
+
+    body::before {
+        content: ' ';
+        position: absolute;
+        top: 14.0rem;
+        width: 90%;
+        height: 90%;
+        z-index: -1;
+        opacity: 0.3;
+    }
+
+	.deck {
+		width: 700px;
+	}
+
+	.deck .card {
+		height: 125px;
+		width: 125px;
+	}
+
+	.popup {
+		width: 60%;
+	}
+}
+
+
